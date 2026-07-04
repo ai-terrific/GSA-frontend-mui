@@ -1,43 +1,21 @@
-import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { ChangeEvent, FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Container,
-  FormControlLabel,
-  Grid,
-  Radio,
-  RadioGroup,
-  Stack,
-  styled,
-  Typography
-} from '@mui/material'
-import AppIcon from '@/components/Core/AppIcon'
-import EmptySubmission from '@/components/Submission/Empty'
-import { Grading, Service } from '@/constants'
+import { Box, Container, Grid, Radio, RadioGroup, Stack, Typography } from '@mui/material'
+
+import { Service } from '@/constants'
 import SummaryPlaceholder from '@/components/Submission/Empty'
-import NextAndBack from './NextAndBack'
 
-const StyledCardLabel = styled(FormControlLabel)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  borderRadius: '8px',
-  padding: '10px 16px',
-  margin: '8px 0',
-  transition: 'all 0.2s ease-in-out',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  '&:hover': {
-    backgroundColor: theme.palette.action.hover
-  },
-  // Style based on internal check state
-  '&:has(span.Mui-checked)': {
-    borderColor: theme.palette.primary.main,
-    backgroundColor: theme.palette.primary.light + '20' // transparent fill
-  }
-}))
+import NextAndBack from './NextAndBack'
+import { StyledCardLabel } from '../Core/CardLabel'
+import Summary from './Summary'
+import { dispatch, selectServiceLevel, useSelector } from '@/store'
 
 const ServiceLevel: FC = () => {
+  const handleUpdate = (event: ChangeEvent<HTMLInputElement>) => {
+    let payload = JSON.parse(event.target.value)
+    dispatch(selectServiceLevel({ serviceLevel: payload.title, fee: payload.minCards * payload.price }))
+  }
+
   return (
     <Box component='section' sx={{ py: 6 }}>
       <Container sx={{ display: 'flex', gap: '30px' }}>
@@ -60,10 +38,11 @@ const ServiceLevel: FC = () => {
               <Grid size={2}>Turnaround</Grid>
               <Grid size={2}>Price</Grid>
             </Grid>
-            <RadioGroup defaultValue={0}>
+            <RadioGroup defaultValue='' onChange={handleUpdate}>
               {Service.map((item, index) => (
                 <StyledCardLabel
-                  value={index}
+                  key={`index-${index}`}
+                  value={JSON.stringify(item)}
                   labelPlacement='end'
                   control={<Radio />}
                   label={
@@ -87,20 +66,7 @@ const ServiceLevel: FC = () => {
             <NextAndBack />
           </Stack>
         </Stack>
-        <Stack
-          direction='column'
-          sx={{
-            gap: 4,
-            width: 400,
-            border: '1px solid #D6D6D6',
-            borderRadius: 2,
-            padding: 6,
-            height: 'fit-content'
-          }}
-        >
-          <Typography variant='h5'>Summary</Typography>
-          <SummaryPlaceholder />
-        </Stack>
+        <Summary />
       </Container>
     </Box>
   )

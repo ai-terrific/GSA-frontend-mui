@@ -32,7 +32,8 @@ import { useStepper } from '@/hooks'
 
 const Confirmation: FC = () => {
   const stepper = useStepper()
-  return (
+  
+return (
     <Box component='section' sx={{ py: 6 }}>
       <Container>
         <Stack sx={{ gap: 6 }}>
@@ -85,6 +86,7 @@ const Confirmation: FC = () => {
                   <FormControl sx={{ width: '100%' }}>
                     <InputLabel htmlFor='country'>Country</InputLabel>
                     <Select
+
                       // value={age}
                       // onChange={handleChange}
                       id='country'

@@ -9,7 +9,7 @@ import { useDialog, useIsLoggedIn, useDeviceType } from '@/hooks'
 import ColorModeIcon from '@/components/Core/ColorModeIcon'
 import Logo from '@/components/Core/Logo'
 
-import { HeaderContainer } from './components/HeaderContainer'
+import { HeaderContainer } from './components/Container'
 import { Box, Container, Link } from '@mui/material'
 import { Links } from '@/constants'
 import NavLinks from './components/NavLinks'
@@ -24,10 +24,6 @@ const Header = () => {
   const { isMobile } = useDeviceType()
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
-
-  const handleLogin = useCallback(() => {
-    openDialog('auth')
-  }, [openDialog])
 
   useEffect(() => {
     const type = queryParams.get('type')
@@ -51,19 +47,17 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Container>
-        <Stack direction='row' sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-          <Stack direction='row' spacing={12}>
-            <Logo />
-            <NavLinks />
-          </Stack>
-          <Stack direction='row' spacing={2}>
-            <ColorModeIcon />
-            <SubmitButton onClick={() => {}} />
-            <SignInButton onClick={() => {}} />
-          </Stack>
+      <Stack direction='row' sx={{ width: '100%', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Stack direction='row' spacing={12}>
+          <Logo />
+          <NavLinks />
         </Stack>
-      </Container>
+        <Stack direction='row' spacing={2}>
+          <ColorModeIcon />
+          <SubmitButton onClick={() => navigate('/submission')} />
+          <SignInButton onClick={() => {}} />
+        </Stack>
+      </Stack>
     </HeaderContainer>
   )
 }

@@ -11,5 +11,9 @@ export function useStepper() {
     dispatch(updateStep({ current: current - 1 }))
   }
 
-  return { current, handleNextStep, handlePreviousStep }
+  const handleUpdateStep = (newStep: number) => {
+    dispatch(updateStep({ current: newStep }))
+  }
+
+  return { current, handleNextStep, handlePreviousStep, handleUpdateStep }
 }

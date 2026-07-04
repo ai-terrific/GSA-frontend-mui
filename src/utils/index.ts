@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify'
+import * as _ from 'lodash'
 
 export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -47,4 +48,15 @@ export const formatCapitalCaseName = (str: string) => {
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
+}
+
+export const isEmpty = (value: unknown) => {
+  return _.isEmpty(value)
+}
+
+export const formatCardNumber = (number: string) => {
+  return number
+    .replace(/\D/g, '')
+    .slice(0, 16)
+    .replace(/(\d{4})(?=\d)/g, '$1 ')
 }

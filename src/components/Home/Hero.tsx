@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css' // Mandatory core styles
 //@ts-ignore
 import 'swiper/css/navigation'
+
 //@ts-ignore
 import 'swiper/css/pagination'
 import { Box, Button, ButtonProps, Container, Stack, styled, Typography } from '@mui/material'

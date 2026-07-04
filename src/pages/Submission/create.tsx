@@ -33,16 +33,22 @@ const CreateSubmission: FC = () => {
             {StepData.map((step, index) => (
               <Step key={step.title}>
                 <StepButton
-                  sx={{ border: '1px solid #797979', borderRadius: 1000, padding: 1, width: 'fit-content' }}
+                  sx={{
+                    border: stepper.current === index ? '1px solid #262628 !important' : '1px solid #F1F1F1',
+                    borderRadius: 1000,
+                    padding: 1,
+                    width: 'fit-content'
+                  }}
+                  onClick={() => stepper.handleUpdateStep(index)}
                   icon={
                     <Box
                       sx={theme => ({
                         width: '18px',
                         height: '18px',
                         borderRadius: '1000px',
-                        backgroundColor: '#f1f1f1',
+                        backgroundColor: stepper.current > index ? '#E24744' : '#f1f1f1',
                         fontSize: '12px',
-                        color: '#797979',
+                        color: stepper.current > index ? 'white' : stepper.current === index ? '#1D1D1F' : '#797979',
                         fontWeight: 700
                       })}
                     >

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -24,31 +24,22 @@ import {
 } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
 import EmptySubmission from '@/components/Submission/Empty'
-import { Grading } from '@/constants'
+import { CARDS, Grading } from '@/constants'
 import SummaryPlaceholder from '@/components/Submission/Empty'
 import { Delete, DeleteOutlineOutlined, Search } from '@mui/icons-material'
 import { colors } from '@/theme'
 import NextAndBack from './NextAndBack'
-
-const StyledCardLabel = styled(FormControlLabel)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  borderRadius: '8px',
-  padding: '10px 16px',
-  margin: '8px 0',
-  transition: 'all 0.2s ease-in-out',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  '&:hover': {
-    backgroundColor: theme.palette.action.hover
-  },
-  // Style based on internal check state
-  '&:has(span.Mui-checked)': {
-    borderColor: theme.palette.primary.main,
-    backgroundColor: theme.palette.primary.light + '20' // transparent fill
-  }
-}))
+import { CardType } from '@/types'
+import { dispatch, selectCards, selectItemType, useSelector } from '@/store'
+import Summary from './Summary'
 
 const AddItems: FC = () => {
+  const { cards } = useSelector(store => store.submission)
+
+  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(selectCards({ cards: CARDS.filter(item => item.title.includes(event.target.value)) }))
+  }
+
   return (
     <Box component='section' sx={{ py: 6 }}>
       <Container sx={{ display: 'flex', gap: '30px' }}>
@@ -74,6 +65,7 @@ const AddItems: FC = () => {
                   }
                 }}
                 placeholder='Search for cards'
+                onChange={handleFilter}
               />
               <Typography variant='caption' color='secondary'>
                 Start with the player name and card number. Then add any inserts and/or parallels, if applicable. It
@@ -93,80 +85,60 @@ const AddItems: FC = () => {
               <Grid size={4}>Card Service</Grid>
               <Grid size={3}>Decl. Value</Grid>
             </Grid>
-            <Stack direction='column' sx={{ borderRadius: 2, background: '#ECECEC' }}>
-              <Grid container sx={{ borderRadius: 2, backgroundColor: 'white', padding: 3 }} spacing={2}>
-                <Grid size={5} direction='row'>
-                  <Stack direction='row' sx={{ alignItems: 'center', gap: 2 }}>
-                    <Box component='img' src='/slider4.png' alt='table-card-img' height={40} />
-                    <Typography variant='subtitle2'>1952 Topps 275 Pat Mullin</Typography>
+            {cards.map((card, index) => (
+              <Stack
+                key={`index-${index}`}
+                direction='column'
+                sx={{ borderRadius: 2, background: '#ECECEC', border: '1px solid #ececec' }}
+              >
+                <Grid container sx={{ borderRadius: 2, backgroundColor: 'white', padding: 3 }} spacing={2}>
+                  <Grid size={5}>
+                    <Stack direction='row' sx={{ alignItems: 'center', gap: 2 }}>
+                      <Box component='img' src={card.src} alt='table-card-img' height={40} />
+                      <Typography variant='subtitle2'>{card.title}</Typography>
+                    </Stack>
+                  </Grid>
+                  <Grid size={4}>
+                    <FormControl sx={{ width: '100%' }} size='small'>
+                      <Select displayEmpty inputProps={{ 'aria-label': 'Age' }}>
+                        <MenuItem>{card.service}</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid size={3}>
+                    <Stack direction='row' spacing={2}>
+                      <TextField
+                        variant='outlined'
+                        type='number'
+                        size='small'
+                        slotProps={{
+                          input: {
+                            startAdornment: <InputAdornment position='start'>$</InputAdornment>
+                          }
+                        }}
+                        defaultValue={card.value}
+                      />
+                      <IconButton color='error'>
+                        <AppIcon name='trash' />
+                      </IconButton>
+                    </Stack>
+                  </Grid>
+                </Grid>
+                <Stack direction='row' sx={{ gap: 6, padding: '8px 12px', alignItems: 'center' }}>
+                  <Typography sx={{ fontSize: 10, fontWeight: 600, color: '#797979' }}>Adv. Options: </Typography>
+                  <Stack direction='row' sx={{ gap: 4 }}>
+                    <FormControlLabel control={<Checkbox />} label='Encapsulate all if altered' />
+                    <FormControlLabel control={<Checkbox />} label='Oversized item' />
+                    <FormControlLabel control={<Checkbox />} label='Authentic' />
                   </Stack>
-                </Grid>
-                <Grid size={4}>
-                  <FormControl sx={{ width: '100%' }}>
-                    <Select
-                      // value={age}
-                      // onChange={handleChange}
-                      displayEmpty
-                      inputProps={{ 'aria-label': 'Age' }}
-                    >
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid size={3}>
-                  <Stack direction='row' spacing={2}>
-                    <TextField
-                      variant='outlined'
-                      type='number'
-                      slotProps={{
-                        input: {
-                          startAdornment: <InputAdornment position='start'>$</InputAdornment>
-                        }
-                      }}
-                      placeholder='0'
-                    />
-                    <IconButton color='error'>
-                      <AppIcon name='trash' />
-                    </IconButton>
-                  </Stack>
-                </Grid>
-              </Grid>
-              <Stack direction='row' sx={{ gap: 6, padding: '8px 12px', alignItems: 'center' }}>
-                <Typography sx={{ fontSize: 10, fontWeight: 600, color: '#797979' }}>Adv. Options: </Typography>
-                <Stack direction='row' sx={{ gap: 4 }}>
-                  <FormControlLabel control={<Checkbox />} label='Encapsulate all if altered' />
-                  <FormControlLabel control={<Checkbox />} label='Oversized item' />
-                  <FormControlLabel control={<Checkbox />} label='Authentic' />
                 </Stack>
               </Stack>
-            </Stack>
+            ))}
             <FormControlLabel control={<Checkbox />} label='Encapsulate all if altered' />
             <NextAndBack />
           </Stack>
         </Stack>
-        <Stack
-          direction='column'
-          sx={{
-            gap: 4,
-            width: 400,
-            border: '1px solid #D6D6D6',
-            borderRadius: 2,
-            padding: 6,
-            height: 'fit-content'
-          }}
-        >
-          <Typography variant='h5'>Summary</Typography>
-          <Stack direction='row' sx={{ justifyContent: 'space-between' }}>
-            <Typography variant='subtitle2' sx={{ color: colors.grey }}>
-              Item Type
-            </Typography>
-            <Typography variant='subtitle2' sx={{ color: '#1D1D1F' }}>
-              Standard Card Grading
-            </Typography>
-          </Stack>
-        </Stack>
+        <Summary />
       </Container>
     </Box>
   )

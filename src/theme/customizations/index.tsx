@@ -275,6 +275,7 @@ export const customizations: Components<Theme> = {
       }
     }
   },
+
   // MuiOutlinedInput: {
   //   styleOverrides: {
   //     input: ({ theme }) => ({
@@ -533,6 +534,29 @@ export const customizations: Components<Theme> = {
       root: ({ theme }) => ({
         margin: 8
       })
+    }
+  },
+  MuiStepButton: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        borderColor: `${colors.red} !important`,
+        '&.Mui-disabled': {
+          borderColor: `${colors.borderLight} !important`
+        }
+      })
+    }
+  },
+  MuiStepLabel: {
+    styleOverrides: {
+      label: {
+        color: '#797979',
+        '&.Mui-active': {
+          color: '#1D1D1F'
+        },
+        '&.Mui-completed': {
+          color: '#E24744'
+        }
+      }
     }
   },
   MuiTable: {

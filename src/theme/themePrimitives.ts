@@ -69,7 +69,7 @@ const defaultTheme = createTheme()
 export const colors = {
   prime: '#0DB1A0',
   grey: '#797979',
-  red: '#CF202E',
+  red: '#E24744',
   orange: '#F7931A',
   green: '#36FF00',
   gradient: 'linear-gradient(180deg, #0DB1A0 0%, #026056 100%)',
@@ -84,6 +84,7 @@ export const colors = {
   bgDark: '#0E1525',
   dark: '#0E1525',
   borderDark: '#C7C7C7',
+  borderLight: '#F1F1F1',
   layer1Dark: '#171D2D',
   layer2Dark: '#1B2131',
   mutedLavender: '#3B5998',

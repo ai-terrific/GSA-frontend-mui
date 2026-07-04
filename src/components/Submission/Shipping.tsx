@@ -1,50 +1,30 @@
-import { FC } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { ChangeEvent, FC } from 'react'
 
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Radio,
-  RadioGroup,
-  Stack,
-  styled,
-  TextField,
-  Typography
-} from '@mui/material'
+import { Box, Button, Container, Divider, Grid, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
+
 import AppIcon from '@/components/Core/AppIcon'
-import EmptySubmission from '@/components/Submission/Empty'
-import { Grading, paymentAccount, shippingAddresses, shippingMethods } from '@/constants'
 import SummaryPlaceholder from '@/components/Submission/Empty'
-import NextAndBack from './NextAndBack'
-import { spacing } from '../../theme/themePrimitives'
+import { StyledCardLabel } from '@/components/Core/CardLabel'
+import { paymentAccount, shippingAddresses, shippingMethods } from '@/constants'
 import { useStepper } from '@/hooks'
-
-const StyledCardLabel = styled(FormControlLabel)(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider}`,
-  borderRadius: '8px',
-  padding: '10px 16px',
-  margin: '8px 0',
-  transition: 'all 0.2s ease-in-out',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  width: '100%',
-  '&:hover': {
-    backgroundColor: theme.palette.action.hover
-  },
-  // Style based on internal check state
-  '&:has(span.Mui-checked)': {
-    borderColor: theme.palette.error.light,
-    backgroundColor: theme.palette.error.light, // transparent fill
-    color: theme.palette.error.main
-  }
-}))
+import { dispatch, setShipping } from '@/store'
+import Summary from './Summary'
 
 const Shipping: FC = () => {
   const stepper = useStepper()
+
+  const setShippingAddress = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setShipping({ shippingAddress: event.target.value }))
+  }
+
+  const setShippingMethod = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setShipping({ shippingMethod: event.target.value }))
+  }
+
+  const setPaymentAccount = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setShipping({ paymentAccount: event.target.value }))
+  }
+
   return (
     <Box component='section' sx={{ py: 6 }}>
       <Container sx={{ display: 'flex', gap: '30px' }}>
@@ -59,10 +39,10 @@ const Shipping: FC = () => {
             </Stack>
             <Stack sx={{ gap: 4 }}>
               <Typography variant='subtitle1'>Select Shipping address</Typography>
-              <RadioGroup defaultValue={0}>
+              <RadioGroup defaultValue='' onChange={setShippingAddress}>
                 {shippingAddresses.map((item, index) => (
                   <StyledCardLabel
-                    value={index}
+                    value={item.street}
                     labelPlacement='start'
                     control={<Radio color='error' />}
                     label={
@@ -83,12 +63,12 @@ const Shipping: FC = () => {
             <Divider />
             <Stack sx={{ gap: 4 }}>
               <Typography variant='subtitle1'>Select shipping method</Typography>
-              <RadioGroup defaultValue={0}>
+              <RadioGroup defaultValue='' onChange={setShippingMethod}>
                 <Grid container spacing={2}>
                   {shippingMethods.map((item, index) => (
                     <Grid size={6}>
                       <StyledCardLabel
-                        value={index}
+                        value={item.label}
                         labelPlacement='start'
                         control={<Radio color='error' />}
                         label={
@@ -111,10 +91,10 @@ const Shipping: FC = () => {
             <Divider />
             <Stack sx={{ gap: 4 }}>
               <Typography variant='subtitle1'>Select shipping payment account</Typography>
-              <RadioGroup defaultValue={0}>
+              <RadioGroup defaultValue='' onChange={setPaymentAccount}>
                 {paymentAccount.map((item, index) => (
                   <StyledCardLabel
-                    value={index}
+                    value={item.label}
                     labelPlacement='start'
                     control={<Radio color='error' />}
                     label={
@@ -156,20 +136,7 @@ const Shipping: FC = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Stack
-          direction='column'
-          sx={{
-            gap: 4,
-            width: 400,
-            border: '1px solid #D6D6D6',
-            borderRadius: 2,
-            padding: 6,
-            height: 'fit-content'
-          }}
-        >
-          <Typography variant='h5'>Summary</Typography>
-          <SummaryPlaceholder />
-        </Stack>
+        <Summary />
       </Container>
     </Box>
   )

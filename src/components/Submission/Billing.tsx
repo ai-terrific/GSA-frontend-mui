@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -17,6 +17,7 @@ import {
   Radio,
   RadioGroup,
   Select,
+  SelectChangeEvent,
   Stack,
   styled,
   TextField,
@@ -29,9 +30,31 @@ import SummaryPlaceholder from '@/components/Submission/Empty'
 import NextAndBack from './NextAndBack'
 import { Visibility } from '@mui/icons-material'
 import { useStepper } from '@/hooks'
+import { dispatch, setPayment } from '@/store'
+import { formatCardNumber } from '@/utils'
 
 const Billing: FC = () => {
   const stepper = useStepper()
+
+  const [cardNumber, setCardNumber] = useState<string>('')
+  const [expiry, setExpiry] = useState<number>(0)
+  const [security, setScurity] = useState<string>('')
+  const [country, setCountry] = useState<string>('')
+
+  const format = (event: ChangeEvent<HTMLInputElement>) => setCardNumber(formatCardNumber(event.target.value))
+
+  const nextStep = () => {
+    dispatch(
+      setPayment({
+        cardNumber,
+        expiry,
+        security,
+        country
+      })
+    )
+    stepper.handleNextStep()
+  }
+
   return (
     <Box component='section' sx={{ py: 6 }}>
       <Container sx={{ display: 'flex', gap: '30px' }}>
@@ -63,19 +86,34 @@ const Billing: FC = () => {
                       </InputAdornment>
                     }
                     label='Card Number'
+                    onChange={format}
+                    value={cardNumber}
                   />
                 </FormControl>
               </Grid>
               <Grid size={{ xs: 12, md: 6 }}>
                 <FormControl fullWidth variant='outlined'>
                   <InputLabel htmlFor='expiry'>Expiry</InputLabel>
-                  <OutlinedInput id='expiry' type='number' label='Expiry' />
+                  <OutlinedInput
+                    id='expiry'
+                    name='expiry'
+                    type='number'
+                    label='Expiry'
+                    value={expiry}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setExpiry(Number(e.target.value))}
+                  />
                 </FormControl>
               </Grid>
               <Grid size={{ xs: 12, md: 6 }}>
                 <FormControl fullWidth variant='outlined'>
                   <InputLabel htmlFor='security-code'>Security Code</InputLabel>
-                  <OutlinedInput id='security-code' type='password' label='Security Code' />
+                  <OutlinedInput
+                    id='security-code'
+                    type='password'
+                    label='Security Code'
+                    value={security}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setScurity(e.target.value)}
+                  />
                 </FormControl>
               </Grid>
               <Grid size={12}>
@@ -84,6 +122,8 @@ const Billing: FC = () => {
                   <Select
                     // value={age}
                     // onChange={handleChange}
+                    value={country}
+                    onChange={(e: SelectChangeEvent) => setCountry(e.target.value)}
                     id='country'
                     label='Country'
                     displayEmpty
@@ -112,12 +152,7 @@ const Billing: FC = () => {
               >
                 Back
               </Button>
-              <Button
-                variant='contained'
-                color='error'
-                sx={{ minWidth: 110, alignSelf: 'end' }}
-                onClick={stepper.handleNextStep}
-              >
+              <Button variant='contained' color='error' sx={{ minWidth: 110, alignSelf: 'end' }} onClick={nextStep}>
                 Review Order
               </Button>
             </Stack>

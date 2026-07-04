@@ -1,13 +1,13 @@
 import { Suspense, useCallback, useEffect, useRef } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-
 import SimpleBarCore from 'simplebar-core'
 
+import { Box } from '@mui/material'
 import LoadingFallback from '@/components/Loading'
+import { Main } from '@/layout/components/Container'
 
 import Header from './Header'
 import Footer from './Footer'
-import { Box } from '@mui/material'
 
 const Layout = () => {
   const navigate = useNavigate()
@@ -28,12 +28,12 @@ const Layout = () => {
   return (
     <Box sx={{ minHeight: '100vh', width: '100vw', overflowX: 'hidden' }}>
       <Header />
-      <main>
+      <Main>
         <Suspense fallback={<LoadingFallback />}>
           <Outlet />
         </Suspense>
-      </main>
-      {/* <Footer /> */}
+      </Main>
+      <Footer />
     </Box>
   )
 }

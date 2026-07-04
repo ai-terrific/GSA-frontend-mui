@@ -1,14 +1,20 @@
 import { useStepper } from '@/hooks'
 import { Button, Stack } from '@mui/material'
 
-const NextAndBack = () => {
+const NextAndBack = ({ nextDisabled }: { nextDisabled?: boolean }) => {
   const stepper = useStepper()
+
   return (
     <Stack direction='row' sx={{ justifyContent: 'space-between' }}>
       <Button
         variant='outlined'
         color='inherit'
-        sx={{ minWidth: 110, borderColor: '#ECECEC', alignSelf: 'end', display: stepper.current ? 'block' : 'none' }}
+        sx={{
+          minWidth: 110,
+          borderColor: '#ECECEC',
+          alignSelf: 'end',
+          visibility: stepper.current ? 'show' : 'hidden'
+        }}
         onClick={stepper.handlePreviousStep}
       >
         Back
@@ -18,7 +24,7 @@ const NextAndBack = () => {
         color='error'
         sx={{ minWidth: 110, alignSelf: 'end' }}
         onClick={stepper.handleNextStep}
-        disabled={stepper.current === 5}
+        disabled={stepper.current === 5 || nextDisabled}
       >
         Continue
       </Button>

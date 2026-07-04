@@ -36,3 +36,4 @@ export const useSelector: TypedUseSelectorHook<RootState> = useAppSelector
 
 export * from './reducers/auth'
 export * from './reducers/step'
+export * from './reducers/submission'
