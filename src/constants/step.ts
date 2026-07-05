@@ -13,6 +13,10 @@ interface StepType {
 
 // export const StepData = [
 export const StepData: StepType[] = [
+  // {
+  //   title: 'Grading Type',
+  //   component: Confirmation
+  // },
   {
     title: 'Grading Type',
     component: GradingType

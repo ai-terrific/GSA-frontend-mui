@@ -1,6 +1,6 @@
 import { FC, ReactNode, createContext, useCallback, useState } from 'react'
 
-type DialogType = 'terms' | 'forgot-password' | 'reset-password' | 'auth' | 'wallet' | 'vault' | 'vip' | '2fa' | null
+type DialogType = 'address' | null
 
 export interface DialogContextProps {
   openDialog: (dialog: DialogType, data?: unknown) => void

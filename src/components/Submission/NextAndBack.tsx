@@ -24,7 +24,7 @@ const NextAndBack = ({ nextDisabled }: { nextDisabled?: boolean }) => {
         color='error'
         sx={{ minWidth: 110, alignSelf: 'end' }}
         onClick={stepper.handleNextStep}
-        disabled={stepper.current === 5 || nextDisabled}
+        disabled={nextDisabled}
       >
         Continue
       </Button>

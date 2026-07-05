@@ -1,5 +1,4 @@
 import { ChangeEvent, FC, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import {
   Box,
@@ -9,29 +8,20 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
-  IconButton,
   InputAdornment,
   InputLabel,
   MenuItem,
   OutlinedInput,
-  Radio,
-  RadioGroup,
   Select,
   SelectChangeEvent,
   Stack,
-  styled,
-  TextField,
   Typography
 } from '@mui/material'
-import AppIcon from '@/components/Core/AppIcon'
-import EmptySubmission from '@/components/Submission/Empty'
-import { Grading } from '@/constants'
-import SummaryPlaceholder from '@/components/Submission/Empty'
-import NextAndBack from './NextAndBack'
-import { Visibility } from '@mui/icons-material'
 import { useStepper } from '@/hooks'
 import { dispatch, setPayment } from '@/store'
 import { formatCardNumber } from '@/utils'
+1
+import Summary from './Summary'
 
 const Billing: FC = () => {
   const stepper = useStepper()
@@ -120,8 +110,6 @@ const Billing: FC = () => {
                 <FormControl sx={{ width: '100%' }}>
                   <InputLabel htmlFor='country'>Country</InputLabel>
                   <Select
-                    // value={age}
-                    // onChange={handleChange}
                     value={country}
                     onChange={(e: SelectChangeEvent) => setCountry(e.target.value)}
                     id='country'
@@ -158,20 +146,7 @@ const Billing: FC = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Stack
-          direction='column'
-          sx={{
-            gap: 4,
-            width: 400,
-            border: '1px solid #D6D6D6',
-            borderRadius: 2,
-            padding: 6,
-            height: 'fit-content'
-          }}
-        >
-          <Typography variant='h5'>Summary</Typography>
-          <SummaryPlaceholder />
-        </Stack>
+        <Summary />
       </Container>
     </Box>
   )

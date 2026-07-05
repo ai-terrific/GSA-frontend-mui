@@ -29,19 +29,6 @@ const Header = () => {
     const type = queryParams.get('type')
     if (!type) return
 
-    switch (type) {
-      case 'signup':
-        toast.success('Successfully', { hideProgressBar: true })
-        break
-      case 'reset-password': {
-        const token = queryParams.get('token')
-        if (token) {
-          openDialog('reset-password', token)
-        }
-        break
-      }
-    }
-
     navigate(location.pathname, { replace: true })
   }, [queryParams, openDialog, navigate, location.pathname])
 

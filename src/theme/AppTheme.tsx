@@ -20,7 +20,7 @@ export const AppTheme = (props: AppThemeProps) => {
           cssVarPrefix: 'template'
         },
         colorSchemes,
-        defaultColorScheme: 'dark',
+        defaultColorScheme: 'light',
         typography,
         shadows,
         shape,

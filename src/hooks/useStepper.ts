@@ -12,6 +12,7 @@ export function useStepper() {
   }
 
   const handleUpdateStep = (newStep: number) => {
+    console.log(newStep)
     dispatch(updateStep({ current: newStep }))
   }
 

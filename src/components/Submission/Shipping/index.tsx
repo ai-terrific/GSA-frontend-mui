@@ -3,15 +3,16 @@ import { ChangeEvent, FC } from 'react'
 import { Box, Button, Container, Divider, Grid, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
 
 import AppIcon from '@/components/Core/AppIcon'
-import SummaryPlaceholder from '@/components/Submission/Empty'
 import { StyledCardLabel } from '@/components/Core/CardLabel'
 import { paymentAccount, shippingAddresses, shippingMethods } from '@/constants'
-import { useStepper } from '@/hooks'
+import { useDialog, useStepper } from '@/hooks'
 import { dispatch, setShipping } from '@/store'
-import Summary from './Summary'
+
+import Summary from '../Summary'
 
 const Shipping: FC = () => {
   const stepper = useStepper()
+  const { openDialog } = useDialog()
 
   const setShippingAddress = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(setShipping({ shippingAddress: event.target.value }))
@@ -56,7 +57,13 @@ const Shipping: FC = () => {
                   />
                 ))}
               </RadioGroup>
-              <Button variant='contained' color='inherit' fullWidth startIcon={<AppIcon name='add' />}>
+              <Button
+                variant='contained'
+                color='inherit'
+                fullWidth
+                startIcon={<AppIcon name='add' />}
+                onClick={() => openDialog('address')}
+              >
                 Add new shipping address
               </Button>
             </Stack>
@@ -69,6 +76,7 @@ const Shipping: FC = () => {
                     <Grid size={6}>
                       <StyledCardLabel
                         value={item.label}
+                        sx={{ height: '100%' }}
                         labelPlacement='start'
                         control={<Radio color='error' />}
                         label={
