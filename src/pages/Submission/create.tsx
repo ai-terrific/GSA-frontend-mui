@@ -62,8 +62,10 @@ const CreateSubmission: FC = () => {
             ))}
           </Stepper>
           <Stack direction='row' sx={{ gap: 4, alignItems: 'center' }}>
-            <Typography variant='body2'>Auto-saved</Typography>
-            <Button variant='contained' color='inherit' onClick={stepper.handleNextStep}>
+            <Button disableRipple variant='text'>
+              <Typography variant='body2'>Auto-saved</Typography>
+            </Button>
+            <Button variant='contained' color='inherit' onClick={() => stepper.handleUpdateStep(0)}>
               Save & Exit
             </Button>
           </Stack>

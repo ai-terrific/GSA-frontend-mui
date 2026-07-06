@@ -15,7 +15,7 @@ type RootState = ReturnType<typeof reducers>
 const persistConfig = {
   key: STORE_KEY,
   storage,
-  whitelist: ['auth, step']
+  whitelist: ['auth', 'step', 'submission']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

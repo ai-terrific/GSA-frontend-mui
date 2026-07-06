@@ -126,7 +126,7 @@ const AddItems: FC = () => {
                 </Grid>
                 <Stack direction='row' sx={{ gap: 6, padding: '8px 12px', alignItems: 'center' }}>
                   <Typography sx={{ fontSize: 10, fontWeight: 600, color: '#797979' }}>Adv. Options: </Typography>
-                  <Stack direction='row' sx={{ gap: 4 }}>
+                  <Stack direction='row' sx={{ gap: 3 }}>
                     <FormControlLabel control={<Checkbox />} label='Encapsulate all if altered' />
                     <FormControlLabel control={<Checkbox />} label='Oversized item' />
                     <FormControlLabel control={<Checkbox />} label='Authentic' />

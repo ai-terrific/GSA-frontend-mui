@@ -58,7 +58,6 @@ const ItemList: FC = () => {
               </Grid>
             </>
           ))}
-        <FormControlLabel control={<Checkbox />} label='Save payment method' />
       </Stack>
     </Paper>
   )

@@ -80,7 +80,7 @@ module.exports = {
       watch: true
     },
     compress: true,
-    port: 5555,
+    port: 5000,
     historyApiFallback: true,
     hot: true
   },
