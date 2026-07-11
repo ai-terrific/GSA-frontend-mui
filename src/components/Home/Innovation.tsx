@@ -1,5 +1,5 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
-import { FC } from 'react'
+import { Box, Container, Grid } from '@mui/material'
+
 import { SectionTitle } from '../Core/Title'
 
 const Innovation = () => {

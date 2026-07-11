@@ -1,4 +1,5 @@
 import { Stack, Typography } from '@mui/material'
+
 import { FooterContainer } from './components/Container'
 
 export default function Footer() {

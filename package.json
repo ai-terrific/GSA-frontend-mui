@@ -7,7 +7,7 @@
     "start": "serve -s build -l 4000",
     "dev": "webpack serve --mode development --open",
     "build": "webpack --mode production",
-    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" --quiet -f json | remove-unused-vars",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "@eslint/js": "^9.15.0",
     "@mui/types": "^9.1.1",
     "@svgr/webpack": "^8.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^22.10.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
@@ -52,6 +53,7 @@
     "node-polyfill-webpack-plugin": "^4.0.0",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.4.2",
+    "remove-unused-vars": "^0.0.14",
     "sass-loader": "^16.0.4",
     "serve": "^14.2.4",
     "style-loader": "^4.0.0",

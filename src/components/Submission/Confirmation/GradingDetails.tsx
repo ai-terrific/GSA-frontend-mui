@@ -1,12 +1,12 @@
+import { IconButton, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { IconButton, Paper, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
-import { colors } from '@/theme'
-import { useSelector } from '@/store'
-import { isEmpty } from '@/utils'
 import { StyledPaper } from '@/components/Core/Paper'
 import { useStepper } from '@/hooks'
+import { useSelector } from '@/store'
+import { colors } from '@/theme'
+import { isEmpty } from '@/utils'
 
 const GradingDetails: FC = () => {
   const stepper = useStepper()

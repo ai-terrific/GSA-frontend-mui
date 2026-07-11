@@ -1,36 +1,27 @@
-import { FC, useState, ChangeEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { Search } from '@mui/icons-material'
 import {
   Box,
-  Button,
   Checkbox,
   Container,
   FormControl,
   FormControlLabel,
-  FormGroup,
   Grid,
   IconButton,
   InputAdornment,
   Link,
   MenuItem,
-  Radio,
-  RadioGroup,
   Select,
   Stack,
-  styled,
   TextField,
   Typography
 } from '@mui/material'
+import { ChangeEvent, FC } from 'react'
+
 import AppIcon from '@/components/Core/AppIcon'
-import EmptySubmission from '@/components/Submission/Empty'
-import { CARDS, Grading } from '@/constants'
-import SummaryPlaceholder from '@/components/Submission/Empty'
-import { Delete, DeleteOutlineOutlined, Search } from '@mui/icons-material'
-import { colors } from '@/theme'
+import { CARDS } from '@/constants'
+import { dispatch, selectCards, useSelector } from '@/store'
+
 import NextAndBack from './NextAndBack'
-import { CardType } from '@/types'
-import { dispatch, selectCards, selectItemType, useSelector } from '@/store'
 import Summary from './Summary'
 
 const AddItems: FC = () => {

@@ -1,49 +1,19 @@
-import { FC, useState, ChangeEvent, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
-
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  IconButton,
-  InputAdornment,
-  InputBase,
-  Link,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
-  Stack,
-  styled,
-  TextField,
-  Typography
-} from '@mui/material'
-import AppIcon from '@/components/Core/AppIcon'
-import EmptySubmission from '@/components/Submission/Empty'
-import { CARDS, Grading } from '@/constants'
-import SummaryPlaceholder from '@/components/Submission/Empty'
-import { Delete, DeleteOutlineOutlined, Search } from '@mui/icons-material'
-import { colors } from '@/theme'
-import NextAndBack from './NextAndBack'
-import { CardType } from '@/types'
-import { dispatch, selectCards, selectItemType, useSelector } from '@/store'
-import { isEmpty } from '../../utils/index'
+import { Button, Divider, InputBase, Stack, Typography, styled } from '@mui/material'
+import { FC } from 'react'
 import { useStepper } from '@/hooks'
+import { useSelector } from '@/store'
+import { colors } from '@/theme'
 
-const ApplyInput = styled(InputBase)(({ theme }) => ({
+import { isEmpty } from '../../utils/index'
+
+const ApplyInput = styled(InputBase)(({}) => ({
   height: 40,
   border: '1px solid #ECECEC',
   background: '#F1F1F1',
   borderRadius: 8
 }))
 
-const ApplyButton = styled(Button)(({ theme }) => ({
+const ApplyButton = styled(Button)(({}) => ({
   padding: '10px 24px'
 }))
 

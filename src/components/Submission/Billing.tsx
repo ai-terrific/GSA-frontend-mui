@@ -1,5 +1,3 @@
-import { ChangeEvent, FC, useState } from 'react'
-
 import {
   Box,
   Button,
@@ -17,11 +15,15 @@ import {
   Stack,
   Typography
 } from '@mui/material'
+import { ChangeEvent, FC, useState } from 'react'
+
 import { useStepper } from '@/hooks'
 import { dispatch, setPayment } from '@/store'
 import { formatCardNumber } from '@/utils'
-1
+
 import Summary from './Summary'
+
+1
 
 const Billing: FC = () => {
   const stepper = useStepper()

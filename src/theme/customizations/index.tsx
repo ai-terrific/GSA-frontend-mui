@@ -1,8 +1,11 @@
+
+import CheckBoxOutlineBlankRoundedIcon from '@mui/icons-material/CheckBoxOutlineBlankRounded'
+import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
 import { chipClasses } from '@mui/material/Chip'
 import { dividerClasses } from '@mui/material/Divider'
 import { iconButtonClasses } from '@mui/material/IconButton'
 import { menuItemClasses } from '@mui/material/MenuItem'
-import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import { selectClasses } from '@mui/material/Select'
 import { svgIconClasses } from '@mui/material/SvgIcon'
 import { tabClasses } from '@mui/material/Tab'
@@ -10,16 +13,10 @@ import { toggleButtonClasses } from '@mui/material/ToggleButton'
 import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup'
 import { Components, Theme, alpha } from '@mui/material/styles'
 
-import CheckBoxOutlineBlankRoundedIcon from '@mui/icons-material/CheckBoxOutlineBlankRounded'
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
-import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded'
-
+import AppIcon from '@/components/Core/AppIcon'
 import { hexToRgba } from '@/utils'
 
-import AppIcon from '@/components/Core/AppIcon'
-
 import { brand, colors, gray, red } from '../themePrimitives'
-import { BorderColor } from '@mui/icons-material'
 
 export const customizations: Components<Theme> = {
   MuiContainer: {
@@ -359,6 +356,7 @@ export const customizations: Components<Theme> = {
       })
     }
   },
+
   // MuiListSubheader: {
   //   styleOverrides: {
   //     root: ({ theme }) => ({
@@ -531,14 +529,14 @@ export const customizations: Components<Theme> = {
   },
   MuiStepConnector: {
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: ({ }) => ({
         margin: 8
       })
     }
   },
   MuiStepButton: {
     styleOverrides: {
-      root: ({ theme }) => ({
+      root: ({ }) => ({
         borderColor: `${colors.red} !important`,
         '&.Mui-disabled': {
           borderColor: `${colors.borderLight} !important`

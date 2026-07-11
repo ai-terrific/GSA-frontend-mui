@@ -57,6 +57,6 @@ export const FooterContainer = styled('footer')(({ theme }) => ({
   })
 }))
 
-export const Main = styled('main')(({ theme }) => ({
+export const Main = styled('main')(({ }) => ({
   minHeight: 'calc(100vh - 127px)'
 }))

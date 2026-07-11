@@ -1,14 +1,14 @@
+import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
 import EmptySubmission from '@/components/Submission/Empty'
 
 const Submission: FC = () => {
   const navigate = useNavigate()
-  
-return (
+
+  return (
     <Box component='section' sx={{ py: 12.5 }}>
       <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
         <Stack sx={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>

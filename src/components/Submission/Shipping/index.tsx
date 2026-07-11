@@ -1,6 +1,5 @@
-import { ChangeEvent, FC } from 'react'
-
 import { Box, Button, Container, Divider, Grid, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
+import { ChangeEvent, FC } from 'react'
 
 import AppIcon from '@/components/Core/AppIcon'
 import { StyledCardLabel } from '@/components/Core/CardLabel'
@@ -41,7 +40,7 @@ const Shipping: FC = () => {
             <Stack sx={{ gap: 4 }}>
               <Typography variant='subtitle1'>Select Shipping address</Typography>
               <RadioGroup defaultValue='' onChange={setShippingAddress}>
-                {shippingAddresses.map((item, index) => (
+                {shippingAddresses.map((item,) => (
                   <StyledCardLabel
                     value={item.street}
                     labelPlacement='start'
@@ -72,7 +71,7 @@ const Shipping: FC = () => {
               <Typography variant='subtitle1'>Select shipping method</Typography>
               <RadioGroup defaultValue='' onChange={setShippingMethod}>
                 <Grid container spacing={2}>
-                  {shippingMethods.map((item, index) => (
+                  {shippingMethods.map((item,) => (
                     <Grid size={6}>
                       <StyledCardLabel
                         value={item.label}
@@ -100,7 +99,7 @@ const Shipping: FC = () => {
             <Stack sx={{ gap: 4 }}>
               <Typography variant='subtitle1'>Select shipping payment account</Typography>
               <RadioGroup defaultValue='' onChange={setPaymentAccount}>
-                {paymentAccount.map((item, index) => (
+                {paymentAccount.map((item,) => (
                   <StyledCardLabel
                     value={item.label}
                     labelPlacement='start'

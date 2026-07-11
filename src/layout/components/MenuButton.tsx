@@ -1,7 +1,7 @@
+import { IconButton } from '@mui/material'
 import { memo } from 'react'
 
 import AppIcon from '@/components/Core/AppIcon'
-import { IconButton } from '@mui/material'
 
 // Sub-components
 export const MenuButton = memo(({ onClick }: { onClick: () => void }) => (

@@ -13,5 +13,9 @@ module.exports = {
   singleQuote: true,
   tabWidth: 2,
   trailingComma: 'none',
-  useTabs: false
+  useTabs: false,
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  importOrder: ['<BUILTIN_MODULES>', '<THIRD_PARTY_MODULES>', '^@/(.*)$', '^[./]'],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true
 }

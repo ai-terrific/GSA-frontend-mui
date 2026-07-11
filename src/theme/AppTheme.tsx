@@ -1,10 +1,9 @@
-import { ReactNode, useMemo } from 'react'
-
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { ReactNode, useMemo } from 'react'
 
-import { colorSchemes, shadows, shape, typography, spacing } from './themePrimitives'
 import { customizations } from './customizations'
+import { colorSchemes, shadows, shape, spacing, typography } from './themePrimitives'
 
 interface AppThemeProps {
   children: ReactNode

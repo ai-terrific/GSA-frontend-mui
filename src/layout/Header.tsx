@@ -1,27 +1,21 @@
-import { memo, useCallback, useEffect, useMemo } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 
 import Stack from '@mui/material/Stack'
+import { memo, useEffect, useMemo } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import { useDialog, useIsLoggedIn, useDeviceType } from '@/hooks'
-
+import { SignInButton, SubmitButton } from '@/components/Core/Button'
 import ColorModeIcon from '@/components/Core/ColorModeIcon'
 import Logo from '@/components/Core/Logo'
+import { useDialog } from '@/hooks'
 
 import { HeaderContainer } from './components/Container'
-import { Box, Container, Link } from '@mui/material'
-import { Links } from '@/constants'
 import NavLinks from './components/NavLinks'
-import { SubmitButton, SignInButton } from '@/components/Core/Button'
 
 // Main Component
 const Header = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const isLoggedIn = useIsLoggedIn()
   const { openDialog } = useDialog()
-  const { isMobile } = useDeviceType()
 
   const queryParams = useMemo(() => new URLSearchParams(location.search), [location.search])
 

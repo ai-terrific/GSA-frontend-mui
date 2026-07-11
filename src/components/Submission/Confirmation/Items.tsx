@@ -1,6 +1,6 @@
+import { Box, Divider, Grid, IconButton, Paper, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { Box, Checkbox, Divider, FormControlLabel, Grid, IconButton, Paper, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
 import { useStepper } from '@/hooks'
 import { useSelector } from '@/store'
@@ -34,7 +34,7 @@ const ItemList: FC = () => {
           </Grid>
         </Grid>
         {cards.length > 0 &&
-          cards.map((item, index) => (
+          cards.map((item,) => (
             <>
               <Divider />
               <Grid container spacing={2}>

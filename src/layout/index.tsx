@@ -1,13 +1,13 @@
+import { Box } from '@mui/material'
 import { Suspense, useCallback, useEffect, useRef } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import SimpleBarCore from 'simplebar-core'
 
-import { Box } from '@mui/material'
 import LoadingFallback from '@/components/Loading'
 import { Main } from '@/layout/components/Container'
 
-import Header from './Header'
 import Footer from './Footer'
+import Header from './Header'
 
 const Layout = () => {
   const navigate = useNavigate()

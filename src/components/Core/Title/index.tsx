@@ -1,6 +1,6 @@
 import { Typography, TypographyProps, styled } from '@mui/material'
 
-export const SectionTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
+export const SectionTitle = styled(Typography)<TypographyProps>(({ }) => ({
   fontFamily: 'Pro Display,sans-serif !important',
   fontWeight: 'bold',
   textAlign: 'center',

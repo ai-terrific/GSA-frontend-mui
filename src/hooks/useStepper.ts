@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+
 import { dispatch, updateStep, useSelector } from '@/store'
 
 export function useStepper() {
@@ -12,9 +14,16 @@ export function useStepper() {
   }
 
   const handleUpdateStep = (newStep: number) => {
-    console.log(newStep)
     dispatch(updateStep({ current: newStep }))
   }
 
-  return { current, handleNextStep, handlePreviousStep, handleUpdateStep }
+  return useMemo(
+    () => ({
+      current,
+      handleNextStep,
+      handlePreviousStep,
+      handleUpdateStep
+    }),
+    [current, handleNextStep, handlePreviousStep, handleUpdateStep]
+  )
 }

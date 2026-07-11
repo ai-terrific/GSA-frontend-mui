@@ -1,12 +1,12 @@
+import { IconButton, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { IconButton, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
-import { colors } from '@/theme'
-import { useSelector } from '@/store'
-import { isEmpty } from '@/utils'
-import { useStepper } from '@/hooks'
 import { StyledPaper } from '@/components/Core/Paper'
+import { useStepper } from '@/hooks'
+import { useSelector } from '@/store'
+import { colors } from '@/theme'
+import { isEmpty } from '@/utils'
 
 const ShippingAndBilling: FC = () => {
   const { shippingAddress, shippingMethod, paymentAccount } = useSelector(store => store.submission)

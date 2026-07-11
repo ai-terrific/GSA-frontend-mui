@@ -1,18 +1,20 @@
+import { Box, Container, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 //@ts-ignore
-import 'swiper/css' // Mandatory core styles
+import 'swiper/css'
+
+// Mandatory core styles
 //@ts-ignore
 import 'swiper/css/navigation'
 
 //@ts-ignore
 import 'swiper/css/pagination'
-import { Box, Button, ButtonProps, Container, Stack, styled, Typography } from '@mui/material'
-import { colors, gray, red } from '@/theme'
-import { purple } from '@mui/material/colors'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
 import { DetailButton } from '@/components/Core/Button'
+import { colors, gray } from '@/theme'
 
 const pagination = {
   el: '.custom-dots', // Links to your custom element

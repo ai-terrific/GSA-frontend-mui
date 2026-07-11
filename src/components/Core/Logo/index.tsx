@@ -1,9 +1,8 @@
-import { memo, useMemo } from 'react'
-
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
+import { memo, useMemo } from 'react'
 
 import { useDeviceType } from '@/hooks'
 

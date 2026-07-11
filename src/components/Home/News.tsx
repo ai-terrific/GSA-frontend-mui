@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { newsData } from './Home.data'
 
 const News: FC = () => {

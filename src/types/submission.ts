@@ -20,3 +20,7 @@ export interface CardType {
   value: number
   service: string
 }
+
+export interface ListType {
+  list: Submission[] | []
+}

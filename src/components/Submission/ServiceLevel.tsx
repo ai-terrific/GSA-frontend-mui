@@ -1,18 +1,15 @@
-import { ChangeEvent, FC } from 'react'
-
 import { Box, Container, Grid, Radio, RadioGroup, Stack, Typography } from '@mui/material'
-
+import { ChangeEvent, FC } from 'react'
 import { Service } from '@/constants'
-import SummaryPlaceholder from '@/components/Submission/Empty'
+import { dispatch, selectServiceLevel } from '@/store'
 
-import NextAndBack from './NextAndBack'
 import { StyledCardLabel } from '../Core/CardLabel'
+import NextAndBack from './NextAndBack'
 import Summary from './Summary'
-import { dispatch, selectServiceLevel, useSelector } from '@/store'
 
 const ServiceLevel: FC = () => {
   const handleUpdate = (event: ChangeEvent<HTMLInputElement>) => {
-    let payload = JSON.parse(event.target.value)
+    const payload = JSON.parse(event.target.value)
     dispatch(selectServiceLevel({ serviceLevel: payload.title, fee: payload.minCards * payload.price }))
   }
 

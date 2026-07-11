@@ -1,23 +1,16 @@
-import { useState } from 'react'
 
-import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
-import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-
+import { useState } from 'react'
 import { useDialog } from '@/hooks'
-import { dispatch, login } from '@/store'
-import { colors } from '@/theme'
 import { handleError } from '@/utils'
 
-import AppIcon from '@/components/Core/AppIcon'
-
 export default function AddAddress() {
-  const { openDialog, closeDialog, data } = useDialog()
-  const [token, setToken] = useState<string>('')
+  const { closeDialog, data } = useDialog()
+  const [token,] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
   const handleRegister = async () => {

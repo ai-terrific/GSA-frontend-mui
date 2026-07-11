@@ -1,9 +1,7 @@
-import { memo, useCallback, useMemo } from 'react'
-
+import { DarkMode, LightMode } from '@mui/icons-material'
 import IconButton, { IconButtonOwnProps } from '@mui/material/IconButton'
 import { useColorScheme } from '@mui/material/styles'
-
-import { DarkMode, LightMode } from '@mui/icons-material'
+import { memo, useCallback, useMemo } from 'react'
 
 const ColorModeIcon = (props: IconButtonOwnProps) => {
   const { mode, systemMode, setMode } = useColorScheme()

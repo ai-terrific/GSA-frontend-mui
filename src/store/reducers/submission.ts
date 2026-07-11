@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-import { Submission } from '@/types'
 import { CARDS } from '@/constants'
+import { Submission } from '@/types'
 
 const initialState: Submission = {
   itemType: '',

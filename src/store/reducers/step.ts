@@ -3,8 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { StepState } from '@/types'
 
 const initialState: StepState = {
-  current: 0,
-  isCompleted: false
+  current: 0
 }
 
 const stepSlice = createSlice({

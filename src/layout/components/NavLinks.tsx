@@ -1,6 +1,6 @@
+import { Box, Link, Typography } from '@mui/material'
 import { memo } from 'react'
 
-import { Box, Link, Typography } from '@mui/material'
 import { Links } from '@/constants'
 
 // Main Component

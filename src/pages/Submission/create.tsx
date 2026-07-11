@@ -1,25 +1,22 @@
-import { FC } from 'react'
 import {
-  colors,
+  Box,
+  Button,
   Container,
   Stack,
-  Stepper,
   Step,
-  StepLabel,
-  StepConnector,
-  StepIcon,
   StepButton,
-  Box,
+  StepConnector,
+  Stepper,
   Typography,
-  Button,
-  useTheme
+  colors
 } from '@mui/material'
+import { FC } from 'react'
+
 import { StepData } from '@/constants'
 import { useStepper } from '@/hooks'
 
 const CreateSubmission: FC = () => {
   const stepper = useStepper()
-  const theme = useTheme()
   const CurrentStep = StepData[stepper['current']].component
 
   return (
@@ -42,7 +39,7 @@ const CreateSubmission: FC = () => {
                   onClick={() => stepper.handleUpdateStep(index)}
                   icon={
                     <Box
-                      sx={theme => ({
+                      sx={{
                         width: '18px',
                         height: '18px',
                         borderRadius: '1000px',
@@ -50,7 +47,7 @@ const CreateSubmission: FC = () => {
                         fontSize: '12px',
                         color: stepper.current > index ? 'white' : stepper.current === index ? '#1D1D1F' : '#797979',
                         fontWeight: 700
-                      })}
+                      }}
                     >
                       {index + 1}
                     </Box>

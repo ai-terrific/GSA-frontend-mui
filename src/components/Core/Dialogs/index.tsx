@@ -1,11 +1,8 @@
+import Dialog from '@mui/material/Dialog'
 import { ComponentType, FC, memo, useMemo } from 'react'
 
-import Dialog from '@mui/material/Dialog'
-import { useTheme } from '@mui/material/styles'
-
-import { useDialog } from '@/hooks'
-
 import Address from '@/components/Submission/Shipping/AddAddress'
+import { useDialog } from '@/hooks'
 
 // Strongly type the dialog names
 const DIALOG_NAMES = {
@@ -21,24 +18,12 @@ const DIALOG_COMPONENTS: Record<DialogType, ComponentType> = {
 }
 
 const DialogsComponent: FC = () => {
-  const theme = useTheme()
   const { activeDialog, closeDialog } = useDialog()
 
   // Memoize the dialog component to prevent unnecessary re-renders
   const DialogComponent = useMemo(
     () => (activeDialog ? DIALOG_COMPONENTS[activeDialog as DialogType] : null),
     [activeDialog]
-  )
-
-  const paperStyles = useMemo(
-    () => ({
-      minWidth: '20rem',
-      backgroundImage: 'none',
-      backgroundColor: theme.palette.background.paper,
-      borderRadius: theme.shape.borderRadius,
-      boxShadow: theme.shadows[10]
-    }),
-    [theme]
   )
 
   return (

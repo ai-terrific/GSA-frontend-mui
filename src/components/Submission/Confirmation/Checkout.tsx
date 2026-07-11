@@ -1,10 +1,10 @@
+import { Divider, IconButton, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { Divider, IconButton, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
-import { colors } from '@/theme'
 import { StyledPaper } from '@/components/Core/Paper'
 import { useStepper } from '@/hooks'
+import { colors } from '@/theme'
 
 const Checkout: FC = () => {
   const stepper = useStepper()

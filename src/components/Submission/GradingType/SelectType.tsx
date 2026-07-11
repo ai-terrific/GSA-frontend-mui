@@ -1,15 +1,13 @@
+import { Box, Radio, RadioGroup, Stack, Typography } from '@mui/material'
 import { ChangeEvent, FC } from 'react'
 
-import { Box, Container, Radio, RadioGroup, Stack, Typography } from '@mui/material'
 import AppIcon from '@/components/Core/AppIcon'
-import SummaryPlaceholder from '@/components/Submission/Empty'
 import { Grading } from '@/constants'
-import { dispatch, useSelector, selectItemType } from '@/store'
-import { colors } from '@/theme'
+import { dispatch, selectItemType, useSelector } from '@/store'
 import { isEmpty } from '@/utils'
 
-import NextAndBack from '../NextAndBack'
 import { StyledCardLabel } from '../../Core/CardLabel'
+import NextAndBack from '../NextAndBack'
 
 const SelectType: FC = () => {
   const { itemType } = useSelector(store => store.submission)

@@ -5,8 +5,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 import App from './App'
 import { persister, store } from './store'
-import { AppTheme } from './theme'
 import './styles/index.css'
+import { AppTheme } from './theme'
 
 const rootElement = document.getElementById('root')
 const root = ReactDOM.createRoot(rootElement!)

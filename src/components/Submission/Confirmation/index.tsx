@@ -1,16 +1,17 @@
+import { Box, Button, Container, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { Box, Container, Stack, Typography, Button } from '@mui/material'
 import { useStepper } from '@/hooks'
 
-import ItemList from './Items'
-import GradingDetails from './GradingDetails'
-import ShippingAndBilling from './ShippingAndBilling'
 import Checkout from './Checkout'
+import GradingDetails from './GradingDetails'
+import ItemList from './Items'
+import ShippingAndBilling from './ShippingAndBilling'
 
 const Confirmation: FC = () => {
   const stepper = useStepper()
-  return (
+  
+return (
     <Box component='section' sx={{ py: 6 }}>
       <Container>
         <Stack sx={{ gap: 6 }}>

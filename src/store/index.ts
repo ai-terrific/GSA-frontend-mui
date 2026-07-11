@@ -1,13 +1,12 @@
 // ** Redux Imports
-import { TypedUseSelectorHook, useSelector as useAppSelector } from 'react-redux'
-
+// ** Reducer Imports
 import { configureStore } from '@reduxjs/toolkit'
+import { TypedUseSelectorHook, useSelector as useAppSelector } from 'react-redux'
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import { STORE_KEY } from '@/configs'
 
-// ** Reducer Imports
 import reducers from './reducers'
 
 type RootState = ReturnType<typeof reducers>

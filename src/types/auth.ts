@@ -25,5 +25,4 @@ export interface UserForm {
 
 export interface StepState {
   current: number
-  isCompleted: boolean
 }

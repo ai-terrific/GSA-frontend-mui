@@ -3,9 +3,9 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { routers } from '@/configs'
 import MainLayout from '@/layout'
+import Home from '@/pages/Home'
 
 import PrivateRoute from './PrivateRoute'
-import Home from '@/pages/Home'
 
 const Login = lazy(() => import('@/pages/Login'))
 const Register = lazy(() => import('@/pages/Register'))
