@@ -14,6 +14,7 @@ export const Service: ServiceType[] = [
     turnaround: '30',
     price: 5
   },
+  
   {
     title: 'Standard',
     description: 'Ideal for Bulk submitters and collectors who want reliable grading at an affordable price.',
